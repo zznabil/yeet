@@ -1,0 +1,6 @@
+interface:
+  display_name: "yeet"
+  short_description: "Own the task. Verify the result."
+  default_prompt: "Use $yeet to finish this task end to end and verify the result."
+policy:
+  allow_implicit_invocation: true
