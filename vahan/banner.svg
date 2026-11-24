@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300" width="800" height="300" role="img" aria-label="vähän">
+<rect width="800" height="300" fill="#0a0e13"/>
+<line x1="58" y1="104" x2="556" y2="103" stroke="#ffb347" stroke-width="0.6" opacity="0.60"/>
+<line x1="244" y1="35" x2="386" y2="30" stroke="#ffd9a0" stroke-width="2.4" opacity="0.38"/>
+<line x1="410" y1="130" x2="602" y2="131" stroke="#ffb347" stroke-width="0.9" opacity="0.50"/>
+<line x1="488" y1="123" x2="635" y2="124" stroke="#ffd9a0" stroke-width="0.9" opacity="0.31"/>
+<line x1="271" y1="168" x2="787" y2="167" stroke="#ffd9a0" stroke-width="0.6" opacity="0.47"/>
+<line x1="13" y1="162" x2="167" y2="166" stroke="#e8e2d0" stroke-width="0.9" opacity="0.42"/>
+<line x1="460" y1="141" x2="790" y2="136" stroke="#ffd9a0" stroke-width="0.9" opacity="0.59"/>
+<line x1="237" y1="98" x2="557" y2="93" stroke="#ffb347" stroke-width="2.4" opacity="0.31"/>
+<line x1="374" y1="129" x2="582" y2="132" stroke="#ffb347" stroke-width="2.4" opacity="0.38"/>
+<line x1="435" y1="169" x2="737" y2="164" stroke="#e8e2d0" stroke-width="1.4" opacity="0.48"/>
+<line x1="120" y1="44" x2="645" y2="46" stroke="#ff8a3d" stroke-width="0.6" opacity="0.18"/>
+<line x1="407" y1="278" x2="692" y2="272" stroke="#ff8a3d" stroke-width="2.4" opacity="0.64"/>
+<line x1="67" y1="140" x2="255" y2="136" stroke="#ff8a3d" stroke-width="0.6" opacity="0.27"/>
+<line x1="183" y1="84" x2="809" y2="85" stroke="#e8e2d0" stroke-width="0.6" opacity="0.24"/>
+<line x1="406" y1="250" x2="1027" y2="252" stroke="#ff8a3d" stroke-width="1.4" opacity="0.54"/>
+<line x1="100" y1="119" x2="268" y2="113" stroke="#ffd9a0" stroke-width="0.9" opacity="0.28"/>
+<line x1="75" y1="236" x2="358" y2="237" stroke="#ff8a3d" stroke-width="0.9" opacity="0.38"/>
+<line x1="45" y1="103" x2="664" y2="102" stroke="#e8e2d0" stroke-width="0.6" opacity="0.40"/>
+<line x1="230" y1="122" x2="583" y2="122" stroke="#ffd9a0" stroke-width="0.9" opacity="0.19"/>
+<line x1="292" y1="49" x2="472" y2="50" stroke="#ff8a3d" stroke-width="0.9" opacity="0.45"/>
+<line x1="88" y1="38" x2="426" y2="38" stroke="#ff8a3d" stroke-width="1.4" opacity="0.68"/>
+<line x1="234" y1="50" x2="921" y2="46" stroke="#ffb347" stroke-width="2.4" opacity="0.42"/>
+<line x1="365" y1="215" x2="763" y2="220" stroke="#ffd9a0" stroke-width="0.9" opacity="0.43"/>
+<line x1="56" y1="157" x2="491" y2="163" stroke="#ff8a3d" stroke-width="0.6" opacity="0.57"/>
+<line x1="342" y1="244" x2="613" y2="248" stroke="#ff8a3d" stroke-width="1.4" opacity="0.65"/>
+<line x1="385" y1="158" x2="696" y2="162" stroke="#ffd9a0" stroke-width="0.9" opacity="0.49"/>
+<text x="400" y="215" font-family="Arial Black, Impact, sans-serif" font-size="190" font-weight="900" text-anchor="middle" fill="#f6efe0">vähän</text>
+</svg>
