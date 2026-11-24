@@ -12,7 +12,39 @@ import unittest
 from unittest.mock import patch
 
 import evaluate_skill as evaluator
+import check_record as records
 import validate_skill as validator
+
+
+class RecordChecks(unittest.TestCase):
+    GOOD = 'RECORD = {"kind": "spec", "id": "a", "prev": None, "next": None, "body": {}}\n'
+
+    def run_record(self, text, extra=None):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            (root / 'a.py').write_text(text, encoding='utf-8')
+            for name, body in (extra or {}).items():
+                (root / name).write_text(body, encoding='utf-8')
+            return records.check(root / 'a.py', root)
+
+    def test_accepts_literal_record(self):
+        self.assertEqual(self.run_record(self.GOOD), [])
+
+    def test_rejects_logic_and_bad_shape(self):
+        self.assertTrue(self.run_record('import os\n' + self.GOOD))
+        self.assertTrue(self.run_record(self.GOOD.replace('None', 'open("x")', 1)))
+        self.assertTrue(self.run_record(self.GOOD.replace('"spec"', '"note"')))
+        self.assertTrue(self.run_record(self.GOOD.replace('"next": None', '"next": "gone.py"')))
+
+    def test_rejects_over_limits(self):
+        long_lines = '# x\n' * 201 + self.GOOD
+        self.assertTrue(any('lines' in e for e in self.run_record(long_lines)))
+        long_words = '# ' + 'w ' * 501 + '\n' + self.GOOD
+        self.assertTrue(any('words' in e for e in self.run_record(long_words)))
+
+    def test_accepts_linked_continuation(self):
+        text = self.GOOD.replace('"next": None', '"next": "b.py"')
+        self.assertEqual(self.run_record(text, {'b.py': self.GOOD}), [])
 
 
 class OracleChecks(unittest.TestCase):
