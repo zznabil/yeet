@@ -44,6 +44,7 @@ python tools/validate_skill.py
 python tools/test_checks.py
 python tools/evaluate_skill.py
 python tools/check_record.py .yeet   # optional: check a project's records
+basedpyright .yeet                   # optional: LSP/type check of records
 ```
 
 The validator checks package shape, metadata, local links and required rule coverage.
