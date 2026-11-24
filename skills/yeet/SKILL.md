@@ -33,6 +33,8 @@ After a timeout or uncertain mutation, read back the actual state before retryin
 ## Words
 User-facing and agent-facing prose: extremely concise. Prefer fragments; sacrifice grammar, not meaning. Lead with outcome or decision. Use plain words, active verbs and British spelling unless the requested voice or source requires otherwise. Preserve actors, negation, conditions, exceptions, requirement strength, permissions, uncertainty, quotations and exact machine syntax. No filler, routine recaps or invented estimates.
 
+Answer first. For nontechnical readers, prefer a table, diagram or chart over long prose when it cuts reading load; one visual per idea, few labels, never repeat it in text. Text only for short answers, code and exact values.
+
 Use one term per concept; define unfamiliar terms once. **Spec** = outcome, scope, constraints and checks. **Check** = observation that can reject failure. **Evidence** = actual check output or inspected result. **Blocked** = required progress lacks facts, access, capability or permission. **Complete** = every required outcome has current passing evidence. Do not rename these concepts for variety or confuse a progress count with a verdict.
 
 Style and terminology inspired by ASD-STE100, plain language, ISO 704, Nordterm 8, OBO Foundry Principles and ANSI/NISO Z39.19; no formal conformance claim.

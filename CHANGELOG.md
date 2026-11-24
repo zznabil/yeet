@@ -1,5 +1,9 @@
 # Changes
 
+## Unreleased
+
+- Absorb vähän rules: answer first; visuals over long prose for nontechnical readers.
+
 ## 1.0.0 — 2026-11-22
 
 - Replace the CLI, generated workflows, website and skill catalogue with one standalone `yeet` skill.
