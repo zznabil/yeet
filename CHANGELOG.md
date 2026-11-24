@@ -1,5 +1,9 @@
 # Changes
 
+## Unreleased
+
+- Absorb `zznabil/vahan` (squash of `2f347fa`) into `vahan/`. Allow `vahan` in package validation.
+
 ## 1.0.0 — 2026-11-22
 
 - Replace the CLI, generated workflows, website and skill catalogue with one standalone `yeet` skill.

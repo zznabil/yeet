@@ -52,4 +52,4 @@ See [`tools/TRIALS.md`](tools/TRIALS.md) for fixed pass conditions and evidence 
 Update: inspect the new skill, then replace the installed `yeet` folder. No automatic updates.
 Uninstall: remove that installed folder; leave project work untouched.
 
-[Design sources](CREDITS.md) · [Changes](CHANGELOG.md) · [MIT licence](LICENSE)
+[vähän](vahan/README.md) (global CLAUDE.md, absorbed) · [Design sources](CREDITS.md) · [Changes](CHANGELOG.md) · [MIT licence](LICENSE)

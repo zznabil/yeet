@@ -59,7 +59,7 @@ def validate():
     if not re.fullmatch(adapter_pattern, adapter):
         errors.append('Invalid adapter schema or implicit invocation policy')
     allowed_roots = {'AGENTS.md', 'README.md', 'LICENSE', 'CREDITS.md', 'CHANGELOG.md',
-                     '.gitignore', '.gitattributes', 'skills', 'tools', '.github'}
+                     '.gitignore', '.gitattributes', 'skills', 'tools', '.github', 'vahan'}
     for path in paths:
         relative = path.relative_to(ROOT)
         if relative.parts[0] not in allowed_roots:
