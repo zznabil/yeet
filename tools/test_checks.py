@@ -135,7 +135,7 @@ class OracleChecks(unittest.TestCase):
     def test_metadata_rejects_duplicate_policy_and_missing_section(self):
         with tempfile.TemporaryDirectory() as folder:
             root = Path(folder)
-            for name in ('skills', 'tools', 'vahan'):
+            for name in ('skills', 'tools'):
                 shutil.copytree(validator.ROOT / name, root / name,
                                 ignore=shutil.ignore_patterns('__pycache__'))
             for path in validator.ROOT.iterdir():
