@@ -12,12 +12,13 @@ import unittest
 from unittest.mock import patch
 
 import evaluate_skill as evaluator
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'skills/yeet/scripts'))
 import check_record as records
 import validate_skill as validator
 
 
 class RecordChecks(unittest.TestCase):
-    GOOD = 'RECORD = {"kind": "spec", "id": "a", "prev": None, "next": None, "body": {}}\n'
+    GOOD = 'from record import Record\nRECORD: Record = {"kind": "spec", "id": "a", "prev": None, "next": None, "body": {}}\n'
 
     def run_record(self, text, extra=None):
         with tempfile.TemporaryDirectory() as folder:
@@ -35,6 +36,12 @@ class RecordChecks(unittest.TestCase):
         self.assertTrue(self.run_record(self.GOOD.replace('None', 'open("x")', 1)))
         self.assertTrue(self.run_record(self.GOOD.replace('"spec"', '"note"')))
         self.assertTrue(self.run_record(self.GOOD.replace('"next": None', '"next": "gone.py"')))
+
+    def test_rejects_untyped_or_foreign_import(self):
+        plain = 'RECORD = {"kind": "spec", "id": "a", "prev": None, "next": None, "body": {}}\n'
+        self.assertTrue(self.run_record(plain))
+        self.assertTrue(self.run_record(self.GOOD.replace('from record', 'from os')))
+        self.assertTrue(self.run_record(self.GOOD.replace('RECORD: Record', 'RECORD: dict')))
 
     def test_rejects_over_limits(self):
         long_lines = '# x\n' * 201 + self.GOOD

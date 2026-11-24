@@ -26,7 +26,7 @@ The agent inspects context, forms a compact spec, executes, checks and repairs.
 Routine choices stay with the agent. Only blocking intent, unavailable facts and required approvals return to you.
 
 For short work, the spec stays in context. Longer work may write records in `.yeet/`.
-Records are Python literal files (AST-parseable, LSP-checkable), each at most 200 non-blank lines or 500 words. Overflow continues in a linked file; done records go to `.yeet/archive/`.
+Records are typed Python literal files (AST-parseable, basedpyright-checked; schema in `skills/yeet/scripts/record.py`), each at most 200 non-blank lines or 500 words. Overflow continues in a linked file; done records go to `.yeet/archive/`.
 No required new documents. Question-only, plan-only and read-only requests retain those limits.
 
 ## Limits
@@ -43,8 +43,8 @@ Python 3.10+; standard library only:
 python tools/validate_skill.py
 python tools/test_checks.py
 python tools/evaluate_skill.py
-python tools/check_record.py .yeet   # optional: check a project's records
-basedpyright .yeet                   # optional: LSP/type check of records
+python skills/yeet/scripts/check_record.py .yeet   # optional: check a project's records
+basedpyright -p .yeet                              # optional: LSP/type check of records
 ```
 
 The validator checks package shape, metadata, local links and required rule coverage.

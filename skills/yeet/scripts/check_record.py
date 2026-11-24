@@ -24,11 +24,18 @@ def check(path, root=None):
         tree = ast.parse(text)
     except SyntaxError as error:
         return errors + [f'{path}: syntax error line {error.lineno}']
-    body = [n for n in tree.body if not (isinstance(n, ast.Expr) and isinstance(n.value, ast.Constant)
-                                         and isinstance(n.value.value, str))]
-    if len(body) != 1 or not isinstance(body[0], ast.Assign) or \
-            [getattr(t, 'id', None) for t in body[0].targets] != ['RECORD']:
-        return errors + [f'{path}: need exactly one `RECORD = {{...}}` assignment']
+    is_doc = lambda n: isinstance(n, ast.Expr) and isinstance(n.value, ast.Constant) \
+        and isinstance(n.value.value, str)
+    body = [n for n in tree.body if not is_doc(n)]
+    imp = body[:1]
+    if not (len(imp) == 1 and isinstance(imp[0], ast.ImportFrom) and imp[0].module == 'record'
+            and imp[0].level == 0 and [a.name for a in imp[0].names] == ['Record']):
+        return errors + [f'{path}: first statement must be `from record import Record`']
+    body = body[1:]
+    if len(body) != 1 or not isinstance(body[0], ast.AnnAssign) or \
+            getattr(body[0].target, 'id', None) != 'RECORD' or \
+            getattr(body[0].annotation, 'id', None) != 'Record' or body[0].value is None:
+        return errors + [f'{path}: then exactly one `RECORD: Record = {{...}}`']
     try:
         record = ast.literal_eval(body[0].value)
     except ValueError:
@@ -48,7 +55,7 @@ def check(path, root=None):
 
 def main(argv):
     root = Path(argv[1] if len(argv) > 1 else '.yeet')
-    files = sorted(root.rglob('*.py')) if root.is_dir() else [root]
+    files = sorted(f for f in root.rglob('*.py') if f.name != 'record.py') if root.is_dir() else [root]
     errors = [e for f in files for e in check(f, root if root.is_dir() else None)]
     print('\n'.join(errors) if errors else f'PASS: {len(files)} record(s)')
     return 1 if errors else 0

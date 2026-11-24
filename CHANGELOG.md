@@ -1,8 +1,8 @@
 # Changes
 
-## Unreleased
+## 1.1.0 — 2026-11-24
 
-- Records: yeet specs, state, handoffs, archives and docs are Python literal code records in `.yeet/`, max 200 non-blank lines or 500 words; overflow continues in linked files. Add `tools/check_record.py`. Name basedpyright as the record LSP.
+- Records: yeet specs, state, handoffs, archives and docs are Python literal code records in `.yeet/`, max 200 non-blank lines or 500 words; overflow continues in linked files. Typed `Record` schema and checker ship in `skills/yeet/scripts/`; basedpyright is the record LSP.
 - vähän governs yeet: built-in STE/ISO 704/Diataxis, answer-first and visuals rules; precedence user/project > vähän > yeet; shapes reports, handoffs, docs.
 
 ## 1.0.0 — 2026-11-22

@@ -31,8 +31,10 @@ After a timeout or uncertain mutation, read back the actual state before retryin
 5. Report **result; decisive evidence; material gaps**. If blocked or capped, state completed work, exact missing fact/permission/capability and next safe action. Save a handoff record only when resumption needs it: spec, decisions, changed paths, checks, blockers and next action. On resume, inspect current state; do not trust stale status.
 
 ## Records
-Every yeet-written spec, state, handoff, archive and workflow doc is a code record: Python 3.10+ file in `.yeet/`, parseable by `ast`, LSP-checkable (basedpyright; run `basedpyright .yeet` if installed), no runtime effects. Project deliverables keep project conventions.
-- Shape: one literal assignment, `RECORD = {"kind": "spec|state|handoff|archive|doc", "id": str, "prev": path|None, "next": path|None, "body": {...}}`. Comments allowed. No imports, calls or logic.
+Every yeet-written spec, state, handoff, archive and workflow doc is a code record: Python 3.10+ file in `.yeet/`, parseable by `ast`, no runtime effects. Project deliverables keep project conventions.
+- Setup once: copy `scripts/record.py` and `scripts/pyrightconfig.json` (this skill) into `.yeet/`. They define the typed `Record` and the LSP root.
+- Shape: `from record import Record`, then one `RECORD: Record = {"kind": "spec|state|handoff|archive|doc", "id": str, "prev": path|None, "next": path|None, "body": {...}}` literal. Comments allowed. No other imports, calls or logic.
+- Check: `python scripts/check_record.py .yeet` and `basedpyright -p .yeet` (LSP) when available.
 - Limit per file: 200 non-blank lines or 500 words, whichever first. Never exceed.
 - Over limit: finish the record, set its `next`, start `<id>.<n>.py` with `prev`. Move superseded or done records to `.yeet/archive/`; set `kind` to `archive`. Continuation holds only live facts; link, do not copy.
 - Read records as evidence; re-check state before trusting them.
