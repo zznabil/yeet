@@ -11,7 +11,8 @@ REQUIRED = {
     'Act': ('one owner', 'ten consecutive cycles', 'two attempts', 'integrate', 'regression'),
     'Permission': ('exact target', 'approval', 'read back', 'credentials', 'provider safety'),
     'Verify and finish': ('fresh check', 'actual UI', 'missing required'),
-    'Words': ('sacrifice grammar, not meaning', 'one term per concept', 'uncertainty'),
+    'Words': ('sacrifice grammar, not meaning', 'one term per concept', 'uncertainty',
+              'vähän governs', 'Diataxis', 'Answer first', 'one visual per idea'),
 }
 
 

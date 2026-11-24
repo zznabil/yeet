@@ -2,7 +2,7 @@
 
 ## Unreleased
 
-- Absorb vähän rules: answer first; visuals over long prose for nontechnical readers.
+- vähän governs yeet: built-in STE/ISO 704/Diataxis, answer-first and visuals rules; precedence user/project > vähän > yeet; shapes reports, handoffs, docs.
 
 ## 1.0.0 — 2026-11-22
 

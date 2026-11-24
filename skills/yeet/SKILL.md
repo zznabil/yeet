@@ -31,10 +31,15 @@ After a timeout or uncertain mutation, read back the actual state before retryin
 5. Report **result; decisive evidence; material gaps**. If blocked or capped, state completed work, exact missing fact/permission/capability and next safe action. Save a compact handoff only when resumption needs it: spec, decisions, changed paths, checks, blockers and next action. On resume, inspect current state; do not trust stale status.
 
 ## Words
-User-facing and agent-facing prose: extremely concise. Prefer fragments; sacrifice grammar, not meaning. Lead with outcome or decision. Use plain words, active verbs and British spelling unless the requested voice or source requires otherwise. Preserve actors, negation, conditions, exceptions, requirement strength, permissions, uncertainty, quotations and exact machine syntax. No filler, routine recaps or invented estimates.
+**vähän governs** all yeet prose, user-facing and agent-facing, including specs, reports, handoffs and docs you write. yeet adds execution; it never relaxes vähän. Precedence: user/project rules, then vähän, then yeet. vähän rules, built in so no extra file is needed:
+- ASD-STE100: short active sentences, one action each. ISO 704: one term per concept, define once. Diataxis: split tutorial, how-to, reference, explanation; never mix types in one answer or document.
+- Extremely concise. Fragments; sacrifice grammar, not meaning. No filler, recaps, pleasantries. Answer first, then only needed detail.
+- Keep code, commands, paths, quotes and machine syntax exact. Preserve actors, negation, conditions, exceptions, requirement strength, permissions and uncertainty.
+- Audience may be nontechnical. Prefer a table, diagram or chart over long prose when it cuts reading load; one visual per idea, few labels, plain words, never repeated in text. Text only for short answers, code and exact values.
+- British spelling unless the requested voice or source requires otherwise.
 
-Answer first. For nontechnical readers, prefer a table, diagram or chart over long prose when it cuts reading load; one visual per idea, few labels, never repeat it in text. Text only for short answers, code and exact values.
+vähän shapes workflow: ask only what blocks; report in one visual (e.g. check | result table) when three or more checks; write handoffs as fragments; split deliverable docs by Diataxis type; keep spec terms fixed across spec, code, report.
 
-Use one term per concept; define unfamiliar terms once. **Spec** = outcome, scope, constraints and checks. **Check** = observation that can reject failure. **Evidence** = actual check output or inspected result. **Blocked** = required progress lacks facts, access, capability or permission. **Complete** = every required outcome has current passing evidence. Do not rename these concepts for variety or confuse a progress count with a verdict.
+Define: **Spec** = outcome, scope, constraints and checks. **Check** = observation that can reject failure. **Evidence** = actual check output or inspected result. **Blocked** = required progress lacks facts, access, capability or permission. **Complete** = every required outcome has current passing evidence. Do not rename these concepts for variety or confuse a progress count with a verdict.
 
 Style and terminology inspired by ASD-STE100, plain language, ISO 704, Nordterm 8, OBO Foundry Principles and ANSI/NISO Z39.19; no formal conformance claim.
