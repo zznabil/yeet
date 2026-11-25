@@ -1,6 +1,6 @@
 # Changes
 
-## Unreleased
+## 1.4.0 — 2026-11-25
 
 - Hill-climb before handing back: check notes and tool help for existing setups, try every safe route (other tools, config/registration fixes, missing services, restarts); hand back only credentials, physical actions or decisions, listing routes tried.
 - Before closing or restarting anything the user has open, capture what restores it and verify the restore.
