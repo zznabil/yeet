@@ -1,5 +1,10 @@
 # Changes
 
+## Unreleased
+
+- Hill-climb before handing back: check notes and tool help for existing setups, try every safe route (other tools, config/registration fixes, missing services, restarts); hand back only credentials, physical actions or decisions, listing routes tried.
+- Before closing or restarting anything the user has open, capture what restores it and verify the restore.
+
 ## 1.3.0 — 2026-11-25
 
 - From an OpenSpec re-review: check the case the user would most hate to see broken; prove removed behaviour is gone on every path and renamed behaviour is unchanged.
