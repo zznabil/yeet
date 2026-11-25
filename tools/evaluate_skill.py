@@ -169,7 +169,8 @@ def blocked(root):
 
 def trial(name, action, bundle):
     try:
-        with tempfile.TemporaryDirectory(prefix=f'yeet-{name}-') as folder:
+        # Cleanup lock errors must not mask the trial's real result or failure.
+        with tempfile.TemporaryDirectory(prefix=f'yeet-{name}-', ignore_cleanup_errors=True) as folder:
             root = Path(folder)
             for path, data in bundle.items():
                 target = root / '.agents/skills/yeet' / path

@@ -1,5 +1,11 @@
 # Changes
 
+## 1.2.1 — 2026-11-25
+
+- Live trials run again: default model `anthropic/claude-sonnet-5-5` (retired `openai-codex/gpt-6.1-sol` removed); override with `YEET_TRIAL_MODEL`.
+- `trial_check` shows the agent an explicit PASS/FAIL line, not only an opaque completion marker.
+- Early OMP exits report OMP's stderr; temp-directory cleanup locks no longer mask the real trial result.
+
 ## 1.2.0 — 2026-11-25
 
 - Completion gates: inventory every skippable outcome; reread the request before claiming complete; calibrated checks (a known-broken state must fail); stale-evidence rule; no "should work", deferred or partial coverage as done; disclose caps and unprocessed remainder; worker returns are claims; no blocked/infeasible verdict while a safe distinguishing probe remains.

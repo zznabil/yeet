@@ -139,8 +139,11 @@ export default function trialGuard(api: ExtensionAPI) {
                 stdout: z.string(), stderr: z.string()
             }).strict().parse(JSON.parse(Buffer.concat(chunks).toString("utf8")));
             if (!fs.readFileSync(target(fixture, readable)).equals(originalFixture!)) throw new Error("Fixture changed during check");
-            return { ...reply(result.stdout + result.stderr, { fixture, exitCode: result.exitCode, completed: result.completed }),
-                     isError: result.exitCode !== 0 || !result.completed };
+            const passed = result.exitCode === 0 && result.completed;
+            // Visible verdict: a bare completion marker reads as an opaque, broken tool result.
+            const verdict = `${fixture}: ${passed ? "PASS" : "FAIL"} (exit ${result.exitCode}, ${result.completed ? "completed" : "incomplete"})\n`;
+            return { ...reply(verdict + result.stdout + result.stderr, { fixture, exitCode: result.exitCode, completed: result.completed }),
+                     isError: !passed };
             } finally {
                 checking = false;
             }

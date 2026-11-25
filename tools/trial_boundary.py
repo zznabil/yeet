@@ -23,6 +23,8 @@ import threading
 import time
 
 _LIMIT = 16 * 1024 * 1024
+# Pinned trial model; override when the host retires it (list: `omp models`).
+_MODEL = os.environ.get('YEET_TRIAL_MODEL', 'anthropic/claude-sonnet-5-5')
 _ready = False
 _lock = threading.Lock()
 
@@ -264,7 +266,7 @@ def agent_process(root: Path, prompt: str, local_only: bool, results_dir: Path) 
         argv = [runtime, '--mode', 'rpc', '--no-ui', '--no-session', '--no-context-files',
                 '--no-skills', '--no-rules', '--no-extensions', '--no-lsp', '--no-pty',
                 '--no-tools', '--extension', str(guard), '--config', str(config),
-                '--model', 'openai-codex/gpt-6.1-sol', '--thinking', 'low', '--no-title',
+                '--model', _MODEL, '--thinking', 'low', '--no-title',
                 '--max-time', '600', '--cwd', str(root), '--approval-mode', 'write']
         job = _Job()
         capture = None
@@ -282,7 +284,8 @@ def agent_process(root: Path, prompt: str, local_only: bool, results_dir: Path) 
                         line = capture.events.get(timeout=.1)
                     except queue.Empty:
                         if p.poll() is not None:
-                            raise RuntimeError(f'OMP exited {p.returncode} before RPC completion')
+                            detail = bytes(capture.err[-2000:]).decode('utf-8', 'replace').strip()
+                            raise RuntimeError(f'OMP exited {p.returncode} before RPC completion: {detail}')
                         continue
                     if line is not None:
                         try:

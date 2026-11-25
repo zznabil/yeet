@@ -50,7 +50,7 @@ basedpyright -p .yeet                              # optional: LSP/type check of
 
 The validator checks package shape, metadata, local links and required rule coverage.
 It does not prove agent behaviour. Optional live trials require Windows, authenticated OMP,
-`openai-codex/gpt-6.1-sol` and Codex native MXC. Guarded tools and confined checks fail closed.
+`anthropic/claude-sonnet-5-5` (override: `YEET_TRIAL_MODEL`) and Codex native MXC. Guarded tools and confined checks fail closed.
 See [`tools/TRIALS.md`](tools/TRIALS.md) for fixed pass conditions and evidence limits.
 
 Update: inspect the new skill, then replace the installed `yeet` folder. No automatic updates.
