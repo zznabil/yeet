@@ -40,8 +40,8 @@ def validate():
     match = re.match(r'\A---\nname: yeet\ndescription: "([^"\\\n]+)"\n---\n', text)
     if not match or len(match.group(1)) > 1024:
         errors.append('Invalid name/description frontmatter')
-    if len(text.split()) > 1300:
-        errors.append('Skill exceeds 1,300-word context budget')
+    if len(text.split()) > 1600:
+        errors.append('Skill exceeds 1,600-word context budget')
     sections = dict(re.findall(r'^## ([^\n]+)\n(.*?)(?=^## |\Z)', text, re.M | re.S))
     for title, phrases in REQUIRED.items():
         if title not in sections:

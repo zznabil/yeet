@@ -23,7 +23,8 @@ Installation does not change your project's rules or grant permissions.
 
 Give the outcome and hard constraints. Add checks, budget or approval limits when needed.
 The agent inspects context, forms a compact spec, executes, checks and repairs.
-Routine choices stay with the agent. Only blocking intent, unavailable facts and required approvals return to you.
+Routine choices stay with the agent. Only blocking intent, unavailable facts and required approvals return to you, bundled into one question.
+Finished work arrives ready to use: where it is, how to run or open it, and whether anything is left for you.
 
 For short work, the spec stays in context. Longer work may write records in `.yeet/`.
 Records are typed Python literal files (AST-parseable, basedpyright-checked; schema in `skills/yeet/scripts/record.py`), each at most 200 non-blank lines or 500 words. Overflow continues in a linked file; done records go to `.yeet/archive/`.
