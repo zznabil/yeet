@@ -25,8 +25,11 @@ export default function trialGuard(api: ExtensionAPI) {
     }
     const fixture = localOnly ? undefined : fixtures[0];
     const source = fixture === "test_names.py" ? "names.py" : "sort_dates.py";
-    const readable = new Set(localOnly ? [skill, "release-input.md", "RELEASE.md"] : [skill, fixture!, source]);
-    const writable = new Set(localOnly ? ["RELEASE.md"] : [source]);
+    // Hill-climb task: local-only, the named file is missing; project notes point to its new home.
+    const hill = localOnly && fs.existsSync(path.join(root, "README.md"));
+    const readable = new Set(hill ? [skill, "config.json", "README.md", "NOTES.md", "settings/app.json", "REPORT.md"]
+        : localOnly ? [skill, "release-input.md", "RELEASE.md"] : [skill, fixture!, source]);
+    const writable = new Set(hill ? ["REPORT.md"] : localOnly ? ["RELEASE.md"] : [source]);
     const allowedTools = new Set(localOnly ? ["trial_read", "trial_write"] : ["trial_read", "trial_write", "trial_check"]);
     const maxBytes = 256 * 1024;
     let checking = false;
@@ -90,7 +93,7 @@ export default function trialGuard(api: ExtensionAPI) {
     });
     api.registerTool({
         name: "trial_write", label: "Trial write", loadMode: "essential", approval: "write",
-        description: `Write only ${localOnly ? "RELEASE.md" : source}; whole UTF-8 file, no fixture changes.`,
+        description: `Write only ${[...writable].join(", ")}; whole UTF-8 file, no fixture changes.`,
         parameters: z.object({ path: z.string(), content: z.string() }).strict(),
         async execute(_id: string, args: {path: string, content: string}) {
             if (checking) throw new Error("Trial check in progress");

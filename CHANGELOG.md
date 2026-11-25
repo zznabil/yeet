@@ -1,5 +1,11 @@
 # Changes
 
+## 1.4.1 — 2026-11-25
+
+- Hill-climb rule made concrete after a live trial caught 1.4.0 handing back after one failed route: one failed route is never a blocker; when a named file, path, command or service is missing, read README, AGENTS, NOTES, CHANGELOG and nearby docs, search and try likely new locations first.
+- New live trial `hill-climb` (missing file, notes point to the new home; random token). 1.4.0 failed it; 1.4.1 passed 3 of 3, full suite 4 of 4.
+- Trial runner: `YEET_TRIAL_ONLY` selects trials; the write tool now names the task's real writable file.
+
 ## 1.4.0 — 2026-11-25
 
 - Hill-climb before handing back: check notes and tool help for existing setups, try every safe route (other tools, config/registration fixes, missing services, restarts); hand back only credentials, physical actions or decisions, listing routes tried.
