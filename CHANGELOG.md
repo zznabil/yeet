@@ -1,5 +1,9 @@
 # Changes
 
+## 1.3.0 — 2026-11-25
+
+- From an OpenSpec re-review: check the case the user would most hate to see broken; prove removed behaviour is gone on every path and renamed behaviour is unchanged.
+
 ## 1.2.1 — 2026-11-25
 
 - Live trials run again: default model `anthropic/claude-sonnet-5-5` (retired `openai-codex/gpt-6.1-sol` removed); override with `YEET_TRIAL_MODEL`.
