@@ -1,5 +1,10 @@
 # Changes
 
+## 1.5.1 — 2026-11-26
+
+- Rule 7 (Persistence) tightened after an Antigravity review of 1.5.0: it could be read to suppress an ASK decision or the user's attempt cap, and "unless evidence shows the spec is wrong" let the agent leave the spec alone. Now: persistence stays within the user's cap and rule 4's stall limit, user-set outcomes stay fixed and conflicts go to the user, and it never overrides an ASK decision or a Permission gate. "Every ten cycles" now means ten cycles in total, distinct from rule 4's consecutive stall count.
+- Full 7-trial suite passes (1,628 words).
+
 ## 1.5.0 — 2026-11-26
 
 - New Act rule 7, Persistence: errors are state, not stop signals; do not halt or ask while a safe route remains and the ten-cycle budget holds; re-read the spec every ten cycles and after any context reset; persistence never overrides a Permission gate. Wording from the user's brainstorm, tightened with the gate and wrong-spec exceptions.

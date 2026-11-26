@@ -8,7 +8,7 @@ ROOT = Path(__file__).resolve().parents[1]
 IGNORED = {'.git', 'node_modules', '__pycache__', '.venv', 'trial-results'}
 REQUIRED = {
     'Contract': ('outcome', 'scope', 'constraints', 'checks', 'read-only'),
-    'Act': ('one owner', 'ten consecutive cycles', 'two attempts', 'integrate', 'regression', 'Persistence', 'never overrides a Permission gate'),
+    'Act': ('one owner', 'ten consecutive cycles', 'two attempts', 'integrate', 'regression', 'Persistence', 'never overrides an ASK decision or a Permission gate'),
     'Permission': ('exact target', 'approval', 'read back', 'credentials', 'provider safety'),
     'Verify and finish': ('fresh check', 'actual UI', 'missing required'),
     'Records': ('200 non-blank lines', '500 words', 'ast', 'basedpyright', 'archive', 'prev', 'record.py'),
