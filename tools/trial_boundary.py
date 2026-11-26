@@ -240,7 +240,8 @@ def require_completed_turn(event: dict, assistant: dict | None) -> None:
         raise RuntimeError('Trial has no terminal result text')
 
 
-def agent_process(root: Path, prompt: str, local_only: bool, results_dir: Path) -> subprocess.CompletedProcess[str]:
+def agent_process(root: Path, prompt: str, local_only: bool, results_dir: Path,
+                  paths: dict | None = None) -> subprocess.CompletedProcess[str]:
     """RPC agent with a nonce-verified deny-all-except-trial-tools extension."""
     preflight()
     root = root.resolve(strict=True)
@@ -257,6 +258,7 @@ def agent_process(root: Path, prompt: str, local_only: bool, results_dir: Path) 
                 env[key] = os.environ[key]
         env.update({'TEMP': temporary, 'TMP': temporary, 'TRIAL_ROOT': str(root),
                     'TRIAL_NONCE': nonce, 'TRIAL_LOCAL_ONLY': '1' if local_only else '0',
+                    'TRIAL_PATHS': json.dumps(paths) if paths else '',
                     'TRIAL_PYTHON': sys.executable, 'TRIAL_BOUNDARY': str(Path(__file__).resolve()),
                     'TRIAL_CHILD_ENV': json.dumps(_environment())})
         config = Path(temporary) / 'trial.yml'
@@ -265,7 +267,8 @@ def agent_process(root: Path, prompt: str, local_only: bool, results_dir: Path) 
         config.write_text('mcp:\n  enableProjectConfig: false\ntools:\n  approval:\n    trial_check: allow\n', encoding='utf-8')
         argv = [runtime, '--mode', 'rpc', '--no-ui', '--no-session', '--no-context-files',
                 '--no-skills', '--no-rules', '--no-extensions', '--no-lsp', '--no-pty',
-                '--no-tools', '--extension', str(guard), '--config', str(config),
+                '--tools', 'trial_read,trial_write' + ('' if local_only else ',trial_check'),
+                '--extension', str(guard), '--config', str(config),
                 '--model', _MODEL, '--thinking', 'low', '--no-title',
                 '--max-time', '600', '--cwd', str(root), '--approval-mode', 'write']
         job = _Job()

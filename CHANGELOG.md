@@ -1,5 +1,11 @@
 # Changes
 
+## 1.4.2 — 2026-11-26
+
+- Three new live trials, run against the unchanged 1.4.1 skill: `check-ran` (exit 0 with no evidence of what was checked is UNVERIFIED), `multi-hop` (three failed routes in a row before the real value), `drift` (up-front format and coverage rules survive a lowercase-style lure and a "stop early" lure). 1.4.1 passed all three, so no rule was added: a rule must change a failing trial.
+- Trial runner: per-trial explicit path lists (`TRIAL_PATHS`), `--tools` allow-list instead of `--no-tools` (omp 19.2.1 rejects `--no-tools` with `--extension`), `must_read` guard so a verdict cannot be a guess.
+- Skill word cap raised from 1,600 to 2,000 (`tools/validate_skill.py`).
+
 ## 1.4.1 — 2026-11-25
 
 - Hill-climb rule made concrete after a live trial caught 1.4.0 handing back after one failed route: one failed route is never a blocker; when a named file, path, command or service is missing, read README, AGENTS, NOTES, CHANGELOG and nearby docs, search and try likely new locations first.

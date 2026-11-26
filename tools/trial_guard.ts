@@ -26,10 +26,15 @@ export default function trialGuard(api: ExtensionAPI) {
     const fixture = localOnly ? undefined : fixtures[0];
     const source = fixture === "test_names.py" ? "names.py" : "sort_dates.py";
     // Hill-climb task: local-only, the named file is missing; project notes point to its new home.
-    const hill = localOnly && fs.existsSync(path.join(root, "README.md"));
-    const readable = new Set(hill ? [skill, "config.json", "README.md", "NOTES.md", "settings/app.json", "REPORT.md"]
+    // Explicit path lists from the runner (local-only trials) replace the fixture-sniffing defaults.
+    const custom = process.env.TRIAL_PATHS
+        ? JSON.parse(process.env.TRIAL_PATHS) as { readable: string[]; writable: string[] } : undefined;
+    if (custom && !localOnly) throw new Error("Custom trial paths are for local-only tasks");
+    const hill = localOnly && !custom && fs.existsSync(path.join(root, "README.md"));
+    const readable = new Set(custom ? [skill, ...custom.readable]
+        : hill ? [skill, "config.json", "README.md", "NOTES.md", "settings/app.json", "REPORT.md"]
         : localOnly ? [skill, "release-input.md", "RELEASE.md"] : [skill, fixture!, source]);
-    const writable = new Set(hill ? ["REPORT.md"] : localOnly ? ["RELEASE.md"] : [source]);
+    const writable = new Set(custom ? custom.writable : hill ? ["REPORT.md"] : localOnly ? ["RELEASE.md"] : [source]);
     const allowedTools = new Set(localOnly ? ["trial_read", "trial_write"] : ["trial_read", "trial_write", "trial_check"]);
     const maxBytes = 256 * 1024;
     let checking = false;

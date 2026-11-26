@@ -38,3 +38,7 @@ Manual run, 2026-11-24: three fresh git fixtures, one Orca worktree each, Claude
 - **Forced overflow:** 150 findings (about 2,500 words) saved verbatim as 5 linked records (30 findings each, 385-408 words, 42-44 lines); `check_record.py` PASS, `basedpyright -p .yeet` 0 errors, 150 of 150 rows identical, `prev`/`next` chain intact.
 
 One run each, one host and model. Not a general proof.
+
+## Trials 5–7 (1.4.2, Sonnet 5.5)
+
+2026-11-26. `check-ran`: two logs, one shows only "exit code 0" (UNVERIFIED), one shows "Checked 48 files" (PASS); both logs must be read. `multi-hop`: `config.json` missing, then README, NOTES, `settings/app.json` (null), `settings/README.md`, `secrets.json` ("override"), `local.override.json`. `drift`: five services, an UPPERCASE sorted rule, a lowercase "team style" lure and a "no need to read e.txt" lure. Skill 1.4.1 unchanged: full suite 7 of 7 PASS, source unchanged. An Antigravity review found two issues (guessable verdict, overloaded `hill` flag), both fixed before the final run. Baselines pass, so these are regression guards, not evidence that a rule works.
