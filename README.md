@@ -2,6 +2,8 @@
 
 One skill. Prompt to verified result. Humans steer; agents own execution.
 
+Steadfast, unremitting, resolute: errors are state, not stop signals.
+
 Spec-driven, without proposal rounds, phase commands or task-file rituals.
 Works for one-shot tasks and iterative work. No CLI, runtime, hooks or dependencies.
 

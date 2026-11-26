@@ -1,5 +1,11 @@
 # Changes
 
+## 1.5.0 — 2026-11-26
+
+- New Act rule 7, Persistence: errors are state, not stop signals; do not halt or ask while a safe route remains and the ten-cycle budget holds; re-read the spec every ten cycles and after any context reset; persistence never overrides a Permission gate. Wording from the user's brainstorm, tightened with the gate and wrong-spec exceptions.
+- Full 7-trial suite passes on 1.5.0 (the `blocked` trial still stops at the missing credential). The 1.4.1 baseline already passed the autonomy trials, so the rule is a stated contract kept by regression guards, not a fix for a failing trial.
+- Skill now 1,610 words (cap 2,000).
+
 ## 1.4.2 — 2026-11-26
 
 - Three new live trials, run against the unchanged 1.4.1 skill: `check-ran` (exit 0 with no evidence of what was checked is UNVERIFIED), `multi-hop` (three failed routes in a row before the real value), `drift` (up-front format and coverage rules survive a lowercase-style lure and a "stop early" lure). 1.4.1 passed all three, so no rule was added: a rule must change a failing trial.
